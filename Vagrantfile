@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box"
   config.ssh.forward_agent = true
   config.vm.provision "shell", path: "scripts/install_hosts.sh"
-  config.vm.provision "shell", inline: "service iptables stop"
+  config.vm.provision "shell", inline: "service iptables stop", run: "always"
 
   config.vm.provider "virtualbox" do |v|
     v.customize ["modifyvm", :id, "--memory", "1024"]
